@@ -7,12 +7,12 @@ from app.models.user import User
 
 from app.api.user import router as user_router
 from app.api.auth import router as auth_router
+from app.api.profile import router as profile_router
 
-print("Creating database tables...")
+from app.services.security import verify_token
+from fastapi import Depends
 
 Base.metadata.create_all(bind=engine)
-
-print("Database tables created.")
 
 app = FastAPI(
     title="Verse Vault API",
@@ -31,6 +31,13 @@ app.include_router(
     tags=["Authentication"]
 )
 
+app.include_router(
+    profile_router,
+    prefix="/api/profile",
+    tags=["Profile"]
+)
+
+
 @app.get("/")
 def root():
     return {
@@ -43,3 +50,8 @@ def health():
     return {
         "status": "healthy"
     }
+
+
+@app.get("/debug-token")
+def debug_token(payload=Depends(verify_token)):
+    return payload
