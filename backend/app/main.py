@@ -6,6 +6,7 @@ from app.db.database import engine
 from app.models.user import User
 
 from app.api.user import router as user_router
+from app.api.auth import router as auth_router
 
 print("Creating database tables...")
 
@@ -22,6 +23,12 @@ app.include_router(
     user_router,
     prefix="/api/users",
     tags=["Users"]
+)
+
+app.include_router(
+    auth_router,
+    prefix="/api/auth",
+    tags=["Authentication"]
 )
 
 @app.get("/")
