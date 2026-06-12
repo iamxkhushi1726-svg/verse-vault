@@ -14,6 +14,8 @@ from fastapi import Depends
 
 from app.models.song import Song
 from app.api.song import router as song_router
+from app.models.segment import Segment
+from app.api.segment import router as segment_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -44,6 +46,12 @@ app.include_router(
     song_router,
     prefix="/api/songs",
     tags=["Songs"]
+)
+
+app.include_router(
+    segment_router,
+    prefix="/api/segments",
+    tags=["Segments"]
 )
 
 @app.get("/")
