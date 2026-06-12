@@ -30,3 +30,54 @@ def create_song(
         "message": "Song created",
         "id": db_song.id
     }
+
+
+@router.get("/")
+def get_all_songs(
+    db: Session = Depends(get_db)
+):
+    songs = db.query(Song).all()
+    return songs
+
+
+@router.get("/{song_id}")
+def get_song(
+    song_id: int,
+    db: Session = Depends(get_db)
+):
+    song = (
+        db.query(Song)
+        .filter(Song.id == song_id)
+        .first()
+    )
+
+    if not song:
+        return {
+            "message": "Song not found"
+        }
+
+    return song
+
+
+@router.delete("/{song_id}")
+def delete_song(
+    song_id: int,
+    db: Session = Depends(get_db)
+):
+    song = (
+        db.query(Song)
+        .filter(Song.id == song_id)
+        .first()
+    )
+
+    if not song:
+        return {
+            "message": "Song not found"
+        }
+
+    db.delete(song)
+    db.commit()
+
+    return {
+        "message": "Song deleted"
+    }
