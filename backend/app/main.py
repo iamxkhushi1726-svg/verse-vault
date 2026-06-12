@@ -12,6 +12,9 @@ from app.api.profile import router as profile_router
 from app.services.security import verify_token
 from fastapi import Depends
 
+from app.models.song import Song
+from app.api.song import router as song_router
+
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -37,6 +40,11 @@ app.include_router(
     tags=["Profile"]
 )
 
+app.include_router(
+    song_router,
+    prefix="/api/songs",
+    tags=["Songs"]
+)
 
 @app.get("/")
 def root():
