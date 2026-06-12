@@ -19,6 +19,14 @@ from app.api.segment import router as segment_router
 
 from app.api.ai import router as ai_router
 
+from app.models.playlist import Playlist
+
+from app.api.playlist import router as playlist_router
+
+from app.models.playlist_song import PlaylistSong
+
+from app.api.playlist_song import router as playlist_song_router
+
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -60,6 +68,18 @@ app.include_router(
     ai_router,
     prefix="/api/ai",
     tags=["AI"]
+)
+
+app.include_router(
+    playlist_router,
+    prefix="/api/playlists",
+    tags=["Playlists"]
+)
+
+app.include_router(
+    playlist_song_router,
+    prefix="/api/playlist-songs",
+    tags=["Playlist Songs"]
 )
 
 @app.get("/")
