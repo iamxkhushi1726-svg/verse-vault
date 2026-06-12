@@ -17,6 +17,8 @@ from app.api.song import router as song_router
 from app.models.segment import Segment
 from app.api.segment import router as segment_router
 
+from app.api.ai import router as ai_router
+
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -52,6 +54,12 @@ app.include_router(
     segment_router,
     prefix="/api/segments",
     tags=["Segments"]
+)
+
+app.include_router(
+    ai_router,
+    prefix="/api/ai",
+    tags=["AI"]
 )
 
 @app.get("/")
