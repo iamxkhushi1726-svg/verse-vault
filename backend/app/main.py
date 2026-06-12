@@ -5,6 +5,8 @@ from app.db.database import engine
 
 from app.models.user import User
 
+from app.api.user import router as user_router
+
 print("Creating database tables...")
 
 Base.metadata.create_all(bind=engine)
@@ -16,6 +18,11 @@ app = FastAPI(
     version="1.0.0"
 )
 
+app.include_router(
+    user_router,
+    prefix="/api/users",
+    tags=["Users"]
+)
 
 @app.get("/")
 def root():
