@@ -28,6 +28,12 @@ export default function Dashboard() {
         >
           AI Upload
         </a>
+        <a
+          href="/playlist-songs"
+          className="block border p-4"
+        >
+          Playlist Songs
+        </a>
       </div>
     </main>
   );
