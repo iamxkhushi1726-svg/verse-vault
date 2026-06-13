@@ -11,11 +11,7 @@ export default function UploadPage() {
     if (!file) return;
 
     const formData = new FormData();
-
-    formData.append(
-      "file",
-      file
-    );
+    formData.append("file", file);
 
     try {
       const response = await api.post(
@@ -23,8 +19,7 @@ export default function UploadPage() {
         formData,
         {
           headers: {
-            "Content-Type":
-              "multipart/form-data",
+            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -46,9 +41,7 @@ export default function UploadPage() {
         type="file"
         accept=".mp3"
         onChange={(e) =>
-          setFile(
-            e.target.files?.[0] || null
-          )
+          setFile(e.target.files?.[0] || null)
         }
       />
 
@@ -59,19 +52,30 @@ export default function UploadPage() {
         Analyze
       </button>
 
-      {result && (
+      {result?.highlights && (
         <div className="mt-6">
-          <h2 className="font-bold">
-            Highlights
+          <h2 className="text-xl font-bold mb-4">
+            Detected Highlights
           </h2>
 
-          <pre>
-            {JSON.stringify(
-              result,
-              null,
-              2
-            )}
-          </pre>
+          {result.highlights.map(
+            (time: number, index: number) => (
+              <div
+                key={index}
+                className="border p-3 mb-2 rounded"
+              >
+                <div>
+                  <strong>
+                    Highlight #{index + 1}
+                  </strong>
+                </div>
+
+                <div>
+                  Time: {time}s
+                </div>
+              </div>
+            )
+          )}
         </div>
       )}
     </main>
