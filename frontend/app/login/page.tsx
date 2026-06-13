@@ -27,19 +27,19 @@ export default function LoginPage() {
 
       router.push("/dashboard");
     } catch (error) {
-      alert("Login failed");
       console.error(error);
+      alert("Login failed");
     }
   };
 
   return (
-    <main className="p-10">
-      <h1 className="text-3xl font-bold mb-6">
+    <main className="p-10 max-w-md mx-auto">
+      <h1 className="text-4xl font-bold mb-6">
         Verse Vault Login
       </h1>
 
       <input
-        className="border p-2 block mb-4"
+        className="border p-2 w-full mb-4"
         placeholder="Username"
         value={username}
         onChange={(e) =>
@@ -49,7 +49,7 @@ export default function LoginPage() {
 
       <input
         type="password"
-        className="border p-2 block mb-4"
+        className="border p-2 w-full mb-4"
         placeholder="Password"
         value={password}
         onChange={(e) =>
