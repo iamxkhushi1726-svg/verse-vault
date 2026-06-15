@@ -1,36 +1,20 @@
 export default function Home() {
   return (
-    <main className="p-10">
-      <h1 className="text-5xl font-bold">
+    <main className="flex flex-col items-center justify-center min-h-screen">
+      <h1 className="text-6xl font-bold mb-6">
         Verse Vault
       </h1>
 
-      <p className="mt-4 text-lg">
+      <p className="text-xl mb-8">
         AI-Powered Music Highlight Detection
       </p>
 
-      <div className="mt-8 space-y-4">
-        <a
-          href="/login"
-          className="block border p-4 rounded"
-        >
-          Login
-        </a>
-
-        <a
-          href="/dashboard"
-          className="block border p-4 rounded"
-        >
-          Dashboard
-        </a>
-
-        <a
-          href="/songs"
-          className="block border p-4 rounded"
-        >
-          Songs
-        </a>
-      </div>
+      <a
+        href="/login"
+        className="border px-6 py-3 rounded"
+      >
+        Get Started
+      </a>
     </main>
   );
 }

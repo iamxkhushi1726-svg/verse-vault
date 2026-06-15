@@ -7,17 +7,23 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="border-b p-4 flex gap-6">
-      <a href="/dashboard">Dashboard</a>
-      <a href="/songs">Songs</a>
-      <a href="/playlists">Playlists</a>
-      <a href="/playlist-songs">Playlist Songs</a>
-      <a href="/upload">AI Upload</a>
-      <a href="/profile">Profile</a>
+    <nav className="border-b px-6 py-4 flex items-center">
+      <h1 className="text-xl font-bold mr-8">
+        Verse Vault
+      </h1>
+
+      <div className="flex gap-6">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/songs">Songs</a>
+        <a href="/playlists">Playlists</a>
+        <a href="/playlist-songs">Playlist Songs</a>
+        <a href="/upload">AI Upload</a>
+        <a href="/profile">Profile</a>
+      </div>
 
       <button
         onClick={logout}
-        className="ml-auto border px-3 py-1 rounded"
+        className="ml-auto border px-4 py-2 rounded"
       >
         Logout
       </button>
