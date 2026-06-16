@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import ProtectedRoute from "@/components/ProtectedRoute";
 export default function Navbar() {
   const logout = () => {
     localStorage.removeItem("token");
@@ -7,26 +9,26 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="border-b px-6 py-4 flex items-center">
-      <h1 className="text-xl font-bold mr-8">
-        Verse Vault
-      </h1>
+    <nav className="flex items-center justify-between border-b p-4">
+  <div className="text-2xl font-bold">
+    Verse Vault
+  </div>
+  
+  <div className="flex items-center gap-4">
+    <Link href="/dashboard">Dashboard</Link>
+    <Link href="/songs">Songs</Link>
+    <Link href="/playlists">Playlists</Link>
+    <Link href="/playlist-songs">Playlist Songs</Link>
+    <Link href="/upload">AI Upload</Link>
+    <Link href="/profile">Profile</Link>
 
-      <div className="flex gap-6">
-        <a href="/dashboard">Dashboard</a>
-        <a href="/songs">Songs</a>
-        <a href="/playlists">Playlists</a>
-        <a href="/playlist-songs">Playlist Songs</a>
-        <a href="/upload">AI Upload</a>
-        <a href="/profile">Profile</a>
-      </div>
-
-      <button
-        onClick={logout}
-        className="ml-auto border px-4 py-2 rounded"
-      >
-        Logout
-      </button>
-    </nav>
+    <button
+      onClick={logout}
+      className="border px-4 py-2 rounded"
+    >
+      Logout
+    </button>
+  </div>
+</nav>
   );
 }

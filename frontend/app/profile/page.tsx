@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import api from "@/lib/api";
 
 export default function ProfilePage() {
@@ -12,13 +13,15 @@ export default function ProfilePage() {
 
   const fetchProfile = async () => {
     try {
-      const token = localStorage.getItem("token");
+      const token =
+        localStorage.getItem("token");
 
       const response = await api.get(
         "/api/profile/me",
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization:
+              `Bearer ${token}`,
           },
         }
       );
@@ -29,29 +32,34 @@ export default function ProfilePage() {
     }
   };
 
-  if (!user) {
-    return <div className="p-10">Loading...</div>;
-  }
-
   return (
-    <main className="p-10">
-      <h1 className="text-3xl font-bold mb-6">
-        Profile
-      </h1>
+    <ProtectedRoute>
+      <main className="p-10">
+        <h1 className="text-4xl font-bold mb-6">
+          Profile
+        </h1>
 
-      <div className="border p-4 rounded">
-        <p>
-          <strong>ID:</strong> {user.id}
-        </p>
+        {!user && <p>Loading...</p>}
 
-        <p>
-          <strong>Username:</strong> {user.username}
-        </p>
+        {user && (
+          <div className="border p-4 rounded">
+            <p>
+              <strong>ID:</strong>{" "}
+              {user.id}
+            </p>
 
-        <p>
-          <strong>Email:</strong> {user.email}
-        </p>
-      </div>
-    </main>
+            <p>
+              <strong>Username:</strong>{" "}
+              {user.username}
+            </p>
+
+            <p>
+              <strong>Email:</strong>{" "}
+              {user.email}
+            </p>
+          </div>
+        )}
+      </main>
+    </ProtectedRoute>
   );
 }

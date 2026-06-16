@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
 export default function Dashboard() {
@@ -10,57 +11,57 @@ export default function Dashboard() {
           Verse Vault Dashboard
         </h1>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          <a
-            href="/songs"
-            className="border rounded p-6 hover:bg-gray-900"
-          >
-            <h2 className="text-xl font-bold">
-              Songs
-            </h2>
-            <p>Manage your songs</p>
-          </a>
+<div className="grid gap-4 md:grid-cols-2 mt-10">
+  <Link
+    href="/songs"
+    className="border rounded p-6 hover:bg-gray-900"
+  >
+    <h2 className="text-xl font-bold">
+      Songs
+    </h2>
+    <p>Manage your songs</p>
+  </Link>
 
-          <a
-            href="/playlists"
-            className="border rounded p-6 hover:bg-gray-900"
-          >
-            <h2 className="text-xl font-bold">
-              Playlists
-            </h2>
-            <p>Create and manage playlists</p>
-          </a>
+  <Link
+    href="/playlists"
+    className="border rounded p-6 hover:bg-gray-900"
+  >
+    <h2 className="text-xl font-bold">
+      Playlists
+    </h2>
+    <p>Create and manage playlists</p>
+  </Link>
 
-          <a
-            href="/playlist-songs"
-            className="border rounded p-6 hover:bg-gray-900"
-          >
-            <h2 className="text-xl font-bold">
-              Playlist Songs
-            </h2>
-            <p>Add songs to playlists</p>
-          </a>
+  <Link
+    href="/playlist-songs"
+    className="border rounded p-6 hover:bg-gray-900"
+  >
+    <h2 className="text-xl font-bold">
+      Playlist Songs
+    </h2>
+    <p>Add songs to playlists</p>
+  </Link>
 
-          <a
-            href="/upload"
-            className="border rounded p-6 hover:bg-gray-900"
-          >
-            <h2 className="text-xl font-bold">
-              AI Upload
-            </h2>
-            <p>Analyze MP3 highlights</p>
-          </a>
+  <Link
+    href="/upload"
+    className="border rounded p-6 hover:bg-gray-900"
+  >
+    <h2 className="text-xl font-bold">
+      AI Upload
+    </h2>
+    <p>Analyze MP3 highlights</p>
+  </Link>
 
-          <a
-            href="/profile"
-            className="border rounded p-6 hover:bg-gray-900"
-          >
-            <h2 className="text-xl font-bold">
-              Profile
-            </h2>
-            <p>View account details</p>
-          </a>
-        </div>
+  <Link
+    href="/profile"
+    className="border rounded p-6 hover:bg-gray-900"
+  >
+    <h2 className="text-xl font-bold">
+      Profile
+    </h2>
+    <p>View account details</p>
+  </Link>
+</div>
       </main>
     </ProtectedRoute>
   );
